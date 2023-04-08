@@ -1,0 +1,9 @@
+Django==3.2.3
+djangorestframework
+djoser
+Pillow
+django-filter
+reportlab
+psycopg2-binary
+drf-extra-fields
+gunicorn
