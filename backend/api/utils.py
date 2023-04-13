@@ -5,7 +5,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
-from rest_framework import exceptions, status, permissions
+from rest_framework import exceptions, status
 from rest_framework.response import Response
 
 from recipes.models import RecipeIngredient
@@ -66,6 +66,7 @@ def create_pdf_from_queryset(queryset, username):
     text.textLine(' ')
     text.textLine(' ')
     text.setFont('DejaVuSerif', 12)
+
     for items in queryset:
         text.textLine(get_shopping_list_text(**items))
     p.drawText(text)

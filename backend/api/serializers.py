@@ -55,8 +55,8 @@ class RecipeSerializer(serializers.BaseSerializer):
         param = (
             'ingredients',
             'tags',
-            'image',
             'name',
+            'image',
             'text',
             'cooking_time',
         )
@@ -126,12 +126,16 @@ class RecipeSerializer(serializers.BaseSerializer):
         ingredients_serializer = RecipeIngredientSerializer(
             instance.recipe_ingredient.all(), many=True
         )
+        try:
+            image = instance.image.url
+        except ValueError:
+            image = ''
 
         return {
             'id': instance.id,
             'name': instance.name,
             'text': instance.text,
-            'image': instance.image.url,
+            'image': image,
             'cooking_time': instance.cooking_time,
             'is_favorited': is_favorited,
             'is_in_shopping_cart': is_in_shopping_cart,

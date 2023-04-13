@@ -9,11 +9,12 @@ from rest_framework.response import Response
 
 from api.filters import RecipeFilter
 from api.permissions import IsOwnerOrStaffOrReadOnly, check_object_permissions
+from api.report import create_pdf_from_queryset
 from api.serializers import (
     IngredientSerializer, RecipeFavoriteSerializer, RecipeSerializer,
     TagSerializer,
 )
-from api.utils import create_or_delete_record, create_pdf_from_queryset
+from api.utils import create_or_delete_record
 from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
 from users.pagination import CustomPageNumberPagination
 

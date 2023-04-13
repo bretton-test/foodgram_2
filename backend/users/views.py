@@ -45,10 +45,8 @@ def subscribe(request, pk):
 @permission_classes((IsAuthenticated,))
 def subscriptions(request):
     paginator = CustomPageNumberPagination()
-    user = request.user
-    authors = user.follower.values('author__id')
     queryset = paginator.paginate_queryset(
-        User.objects.filter(pk__in=authors), request
+        User.objects.filter(following__user=request.user), request
     )
     serializer = SubscriptionSerializer(
         queryset, many=True, context={'request': request}

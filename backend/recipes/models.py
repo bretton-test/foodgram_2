@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.db import models
+from rest_framework.exceptions import ValidationError
 
 from users.models import User
 
@@ -175,6 +176,18 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return f'{self.ingredient} in {self.recipe} ingredients list'
+
+    #def delete(self, using=None, keep_parents=False):
+        #assert self.recipe.ingredients.count() != 1, (
+        #    'Нужно добавить ингредиенты'
+        #)
+
+     #   if self.recipe.ingredients.count() == 1:
+
+      #      return None
+        #    raise ValidationError('Нужно добавить ингредиенты')
+
+       # return super().delete(using, keep_parents)
 
 
 class RecipeTag(models.Model):

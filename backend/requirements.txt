@@ -7,3 +7,4 @@ reportlab
 psycopg2-binary
 drf-extra-fields
 gunicorn
+python-dotenv
